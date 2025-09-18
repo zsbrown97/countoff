@@ -8,7 +8,22 @@ func GetKeySignature(majorMinor int) string {
 	return KeySignatures[keyIndex][majorMinor]
 }
 
-// Variables
+// Slices
+var RomanChords = [7][2]string {
+	{"I", "i"},
+	{"ii", "ii°"},
+	{"iii", "III"},
+	{"IV", "iv"},
+	{"V", "v"},
+	{"vi", "VI"},
+	{"vii°", "VII"},
+}
+
+var RomanMajorChords = []string {"I", "ii", "iii", "IV", "V", "vi", "vii°"}
+
+var RomanMinorChords = []string {"i", "ii°", "III", "iv", "v", "VI", "VII"}
+
+// Maps
 var KeySignatures = [12][2]string {
 	{"C", "Am"},
 	{"G", "Em"},
@@ -52,14 +67,4 @@ var MinorKeys = map[string][]string {
 	"Cm": {"Cm","Ddim","Eb","Fm","Gm","Ab","Bb"},
 	"Gm": {"Gm","Adim","Bb","Cm","Dm","Eb","F"},
 	"Dm": {"Dm","Edim","F","Gm","Am","Bb","C"},
-}
-
-var RomanChords = [7][2]string {
-	{"I", "i"},
-	{"ii", "ii°"},
-	{"iii", "III"},
-	{"IV", "iv"},
-	{"V", "v"},
-	{"vi", "VI"},
-	{"vii°", "VII"},
 }
