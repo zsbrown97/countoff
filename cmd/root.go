@@ -16,7 +16,7 @@ var rootCmd = &cobra.Command{
 		//majorMinor := rand.Intn(2)
 		//song.KeySignature(majorMinor)
 		majorMinor := rand.Intn(2)
-		fmt.Println(song.KeySignature(majorMinor))
+		fmt.Println(song.GetKeySignature(majorMinor))
 		switch majorMinor{
 		case 0:
 			fmt.Println(song.MajorProgression(4))

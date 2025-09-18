@@ -5,17 +5,22 @@ import (
 	"strings"
 )
 
+func getChord(majorMinor int) string {
+	chordIndex := rand.Intn(len(RomanChords))
+	return RomanChords[chordIndex][majorMinor]
+}
+
 func Progression(len int, majorMinor int) string {
 	progression := ""
 	for i := 0; i < len; i++ {
-		progression += Chord(majorMinor) + " "
+		progression += getChord(majorMinor) + " "
 	} 
 	return strings.TrimSpace(progression)
 }
 
 func MajorProgression(length int) string {
 	// I ii iii IV V vi vii°
-	progression := []string {Chord(0)} 
+	progression := []string {getChord(0)} 
 
 	for i := 1; i < length; i++ {
 		lastChord := progression[len(progression)-1]
@@ -23,7 +28,7 @@ func MajorProgression(length int) string {
 
 		switch lastChord{
 		case "I":
-			nextChords = append(nextChords, Chord(0))
+			nextChords = append(nextChords, getChord(0))
 		case "ii":
 			nextChords = append(nextChords,"V", "vii°")
 		case "iii":
@@ -47,7 +52,7 @@ func MajorProgression(length int) string {
 
 func MinorProgression(length int) string {
 	// i ii° III iv v VI VII 
-	progression := []string {Chord(1)} 
+	progression := []string {getChord(1)} 
 
 	for i := 1; i < length; i++ {
 		lastChord := progression[len(progression)-1]
@@ -55,7 +60,7 @@ func MinorProgression(length int) string {
 
 		switch lastChord{
 		case "i":
-			nextChords = append(nextChords, Chord(1))
+			nextChords = append(nextChords, getChord(1))
 		case "ii°":
 			nextChords = append(nextChords,"v", "VII")
 		case "III":
