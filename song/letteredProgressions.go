@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func ProgressionLetters(key string, length int, mode int) string {
+func LetteredProgression(key string, length int, mode int) string {
 	var chordMap map[string][]string 
 
 	if mode == 0 {

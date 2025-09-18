@@ -15,7 +15,7 @@ func init() {
 			key := song.GetKeySignature(1)
 			
 			fmt.Println(key)
-			fmt.Println(song.ProgressionLetters(key,4,1))	
+			fmt.Println(song.LetteredProgression(key,4,1))	
 		},
 	}
 	rootCmd.AddCommand(minorCmd)
