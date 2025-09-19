@@ -11,8 +11,10 @@ var rootCmd = &cobra.Command{
 	Use:   "countoff",
 	Short: "A simple CLI for generating chord progressions",
 	Run: func(cmd *cobra.Command, args []string) {
+		progression := song.ChordProgression(Key, 4, MajorMinor)[0]
+
 		fmt.Println(Key)
-		fmt.Println(song.LetteredProgression(Key, 4, MajorMinor))
+		fmt.Println(Stringify(progression))
 	},
 }
 

@@ -12,8 +12,10 @@ func init() {
 		Use: "roman",
 		Short: "Generates a chord progression using roman numerals",
 		Run: func(cmd *cobra.Command, args []string) {
+			progression := song.ChordProgression(Key, 4, MajorMinor)[1]
+
 			fmt.Println(Key)
-			fmt.Println(song.RomanProgression(4, MajorMinor))
+			fmt.Println(Stringify(progression))
 		},
 	}
 
