@@ -6,7 +6,6 @@ import (
 
 func ChordProgression(key string, length int, mode int) [][]string {
 	var progressionIndices = []int{rand.Intn(7)}
-
 	var chordLetters         []string
 	var chordNumerals        []string
 
