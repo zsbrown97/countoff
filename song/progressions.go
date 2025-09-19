@@ -45,6 +45,7 @@ func ChordProgression(key string, length int, mode int) [][]string {
 			nextChords = append(nextChords, 0, 4, 5)
 		}
 
+		// Selects a random index from nextChords, and pushes it into progressionIndices
 		nextChordIndex := nextChords[rand.Intn(len(nextChords))]
 		progressionIndices = append(progressionIndices, nextChordIndex)
 	}
