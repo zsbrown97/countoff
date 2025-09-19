@@ -4,15 +4,14 @@ import (
 	"math/rand"
 )
 
-func ChordProgression(key string, length int, mode int) [][]string {
-	var progressionIndices = []int{rand.Intn(7)}
-	var chordLetters         []string
-	var chordNumerals        []string
-
-	// Return values
-	var progressions       [][]string
-	var progressionLetters   []string
-	var progressionNumerals  []string
+func ChordProgression(key string, length int, mode int) [][]string {	
+	var progressionIndexes = []int{rand.Intn(7)} // Contains index values for lettered and numbered chords
+	var chordLetters         []string 			 // Will contain ordered chords for a given key
+	var chordNumerals        []string 			 // Will contain roman numerals for the given mode 
+	var progressionLetters   []string 			 // Will contain lettered chords based on progressionIndexes
+	var progressionNumerals  []string 			 // Will contain chord numbers based on progressionIndexes
+	// Return value
+	var progressions       [][]string 			 // Will return both progressions
 
 	// Sets chordMap and chordNumerals to major or minor chord names
 	if mode == 0 {
@@ -25,7 +24,7 @@ func ChordProgression(key string, length int, mode int) [][]string {
 	
 	// Adds chords until progression is of size length
 	for i := 1; i < length; i++ {
-		lastChord := progressionIndices[len(progressionIndices)-1]
+		lastChord := progressionIndexes[len(progressionIndexes)-1]
 		var nextChords []int
 
 		switch lastChord {
@@ -45,16 +44,16 @@ func ChordProgression(key string, length int, mode int) [][]string {
 			nextChords = append(nextChords, 0, 4, 5)
 		}
 
-		// Selects a random index from nextChords, and pushes it into progressionIndices
+		// Selects a random index from nextChords, and pushes it into progressionIndexes
 		nextChordIndex := nextChords[rand.Intn(len(nextChords))]
-		progressionIndices = append(progressionIndices, nextChordIndex)
+		progressionIndexes = append(progressionIndexes, nextChordIndex)
 	}
 
-	for _, ind := range progressionIndices {
+	// Populates progressionLetters and progressionNumerals based on progressionIndexes
+	for _, ind := range progressionIndexes {
 		progressionLetters = append(progressionLetters, chordLetters[ind])
 		progressionNumerals = append(progressionNumerals, chordNumerals[ind])
 	}
-
 	progressions = append(
 		progressions,
 		progressionLetters,
