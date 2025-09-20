@@ -13,10 +13,10 @@ func init() {
 		Short: "Generates a minor key progression",
 		Run: func(cmd *cobra.Command, args []string) {
 			key := song.GetKeySignature(1)
-			progression := song.ChordProgression(key, 4, 1)[0]
+			progression := song.GetSongStarter(key, 4, 1)
 			
 			fmt.Println(key)
-			fmt.Println(Stringify(progression))	
+			fmt.Println(progression.Chords)	
 		},
 	}
 	rootCmd.AddCommand(minorCmd)

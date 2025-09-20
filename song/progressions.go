@@ -4,14 +4,12 @@ import (
 	"math/rand"
 )
 
-func ChordProgression(key string, length int, mode int) [][]string {	
+func GetSongStarter(key string, length int, mode int) SongStarter {	
 	var progressionIndexes = []int{rand.Intn(7)} // Contains index values for lettered and numbered chords
 	var chordLetters         []string 			 // Will contain ordered chords for a given key
 	var chordNumerals        []string 			 // Will contain roman numerals for the given mode 
 	var progressionLetters   []string 			 // Will contain lettered chords based on progressionIndexes
 	var progressionNumerals  []string 			 // Will contain chord numbers based on progressionIndexes
-	// Return value
-	var progressions       [][]string 			 // Will return both progressions
 
 	// Sets chordMap and chordNumerals to major or minor chord names
 	if mode == 0 {
@@ -54,11 +52,11 @@ func ChordProgression(key string, length int, mode int) [][]string {
 		progressionLetters = append(progressionLetters, chordLetters[ind])
 		progressionNumerals = append(progressionNumerals, chordNumerals[ind])
 	}
-	progressions = append(
-		progressions,
-		progressionLetters,
-		progressionNumerals,
-	)
-	
-	return progressions
+
+	return SongStarter{
+		Chords: Stringify(progressionLetters),
+		Instrument: GetInstrument(),
+		KeySignature: key,
+		Numerals: Stringify(progressionNumerals),
+	}
 }

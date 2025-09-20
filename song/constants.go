@@ -1,14 +1,26 @@
 package song
 
-import "math/rand"
+import (
+	"math/rand"
+	"strings"
+)
 
-// Functions
-func GetKeySignature(majorMinor int) string {
-	keyIndex := rand.Intn(len(KeySignatures))
-	return KeySignatures[keyIndex][majorMinor]
+// Types
+type SongStarter struct {
+	Chords       string
+	Instrument   string
+	KeySignature string
+	Numerals     string
 }
 
 // Slices
+var Instruments = []string {
+	"Bass",
+	"Guitar",
+	"Piano",
+	"Synth",
+}
+
 var KeySignatures = [12][2]string {
 	{"C", "Am"},
 	{"G", "Em"},
@@ -66,4 +78,19 @@ var MinorKeys = map[string][]string {
 	"Cm": {"Cm","Ddim","Eb","Fm","Gm","Ab","Bb"},
 	"Gm": {"Gm","Adim","Bb","Cm","Dm","Eb","F"},
 	"Dm": {"Dm","Edim","F","Gm","Am","Bb","C"},
+}
+
+// Functions
+func GetInstrument() string {
+	ind := rand.Intn(len(Instruments))
+	return Instruments[ind]
+}
+
+func GetKeySignature(majorMinor int) string {
+	keyIndex := rand.Intn(len(KeySignatures))
+	return KeySignatures[keyIndex][majorMinor]
+}
+
+func Stringify(progression []string) string {
+	return strings.Join(progression, " ")
 }
