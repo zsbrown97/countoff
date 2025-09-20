@@ -12,10 +12,8 @@ func init() {
 		Use: "major",
 		Short: "Generates a major key progression",
 		Run: func(cmd *cobra.Command, args []string) {
-			key := song.GetKeySignature(0)
-			progression := song.GetSongStarter(key, 4, 0)
-			
-			fmt.Println(key)
+			progression := song.GetSongStarter(MajorKey, 4, 0)
+			fmt.Println(MajorKey)
 			fmt.Println(progression.Chords)
 		},
 	}
